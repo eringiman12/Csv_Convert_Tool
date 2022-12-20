@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="../public/css/index.css"> -->
+</head>
+
 
 <body>
-    <h1>名前を入力してください</h1>
-    <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
-        <!-- 
-        <input type="submit" value="送信"> -->
+    <h5>CSVを選択してください</h5>
+    <div class="Form_Block">
+        <!-- <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile"> -->
+        <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
+            <!-- 
+         <input type="submit" value="送信"> -->
+            <div>
+                <!-- <input type="text" name="name" value="クジラ"> -->
+                <input type="file" name="CSV_FIle">
+                <input type="submit" value="送信する">
+            </div>
+            <!-- <div>
+               <input type="submit" value="送信する">
+         </div> -->
+        </form>
+    </div>
+    <div class="Edit_Block">
+        {{ if .file_name }}
+        <p>ファイル名：{{ .file_name }} </p>
+        <table>
+            {{range $i, $v := .file_ary}} {{ if lt $i 10}}
+            <tr> {{range index $.file_ary $i}}
+
+                <td>{{.}}</td>
+
+                {{end}} </tr>{{end}} {{end}}
+        </table>
+
         <div>
-            <input type="text" name="name" value="クジラ">
-            <input type="file" name="CSV_FIle">
+            <p>・</p>
+            <p>・</p>
         </div>
-        <div>
-            <input type="submit" value="送信する">
-        </div>
-    </form>
+
+        {{ else}}
+        <p>ファイルを未選択です</p>
+        {{ end }}
+    </div>
 </body>
 
 </html>
