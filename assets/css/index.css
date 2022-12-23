@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0; }
+  body .main {
+    margin: 5px;
+    padding: 5px; }
+    body .main .Edit_Block {
+      width: 95%;
+      height: 30vh;
+      overflow: auto;
+      margin: 0 auto;
+      margin-top: 2vh;
+      border: 1px solid black;
+      padding: 10px; }
+      body .main .Edit_Block table {
+        border-collapse: spacing;
+        border-spacing: 0;
+        border: 0.5px solid #333; }
+        body .main .Edit_Block table td {
+          padding: 5px;
+          text-align: center;
+          border: 0.5px black solid; }
+        body .main .Edit_Block table .move_column {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          background-color: #093e3e;
+          color: white;
+          font-weight: bold;
+          cursor: pointer; }
+          body .main .Edit_Block table .move_column:hover {
+            background-color: white;
+            outline: 1px solid #093e3e;
+            color: #093e3e; }

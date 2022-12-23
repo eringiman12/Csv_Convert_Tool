@@ -8,7 +8,7 @@ import (
 
 func GetRouter() *gin.Engine {
 	router := gin.Default()
-	router.Static("/css", "/public/css")
+	router.Static("/assets", "./assets")
 	router.LoadHTMLGlob("view/*html")
 	router.GET("/", controller.IndexDisplayAction)
 	router.POST("/regit", controller.Regit_Date)
