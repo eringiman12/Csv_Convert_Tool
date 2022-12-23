@@ -28,12 +28,25 @@
         {{ if .file_name }}
         <p>ファイル名：{{ .file_name }} </p>
         <table>
-            {{range $i, $v := .file_ary}} {{ if lt $i 10}}
-            <tr> {{range index $.file_ary $i}}
-
-                <td>{{.}}</td>
-
-                {{end}} </tr>{{end}} {{end}}
+            {{range $i, $v := .file_ary}} 
+               {{ if lt $i 10}}
+                  {{ if lt $i 1}}
+                     <tr>
+                        <tr>
+                           {{range index $.file_ary $i}}
+                              <td>{{.}}</td>
+                           {{end}}
+                        </tr>
+                     </tr>
+                  {{ else}}
+                     <tr>
+                        {{range index $.file_ary $i}}
+                           <td>{{.}}</td>
+                        {{end}}
+                     </tr>
+                  {{ end }}
+               {{end}}
+            {{end}}
         </table>
 
         <div>
@@ -45,6 +58,10 @@
         <p>ファイルを未選択です</p>
         {{ end }}
     </div>
+    
+    <div class="Preview">
+      
+   </div>
 </body>
 
 </html>
