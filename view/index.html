@@ -3,77 +3,71 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="C:/eco_var/Go/CSV_COnvert_Tool/assets/css/index.css">
-    <style type="text/css" media="screen">
-      @import url("/assets/css/index.css");
+    <!-- <link rel="stylesheet" href="C:/eco_var/Go/CSV_COnvert_Tool/assets/css/index.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <style type="text/css">
+         @import url("/assets/css/index.css");
     </style>
+    
 </head>
 
 <body>
    <div class="main">
       
-      <h5>CSVを選択してください</h5>
+      
       <div class="Form_Block">
-         <!-- <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile"> -->
+         <h5>CSVを選択してください</h5>
+         <p>選択中ファイル名：{{ .file_name }} </p>
          <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
-               <!-- 
-            <input type="submit" value="送信"> -->
-               <div>
-                  <!-- <input type="text" name="name" value="クジラ"> -->
-                  <input type="file" name="CSV_FIle">
-                  <input type="submit" value="送信する">
-               </div>
-               <!-- <div>
-                  <input type="submit" value="送信する">
-            </div> -->
+            <div>
+               <input type="file" name="CSV_FIle">
+               <input type="submit" value="送信する">
+            </div>
          </form>
       </div>
-      <p>ファイル名：{{ .file_name }} </p>
+      
       <div class="Edit_Block">
          {{ if .file_name }}
-         <table>
-               {{range $i, $v := .file_ary}} 
-                  {{ if lt $i 10}}
+            <table id="Edit_Table">
+                  {{range $i, $v := .file_ary}} 
                      {{ if lt $i 1}}
-                        <tr>
-                           {{range index $.file_ary $i}}
-                              <td>
-                                 <select class="move_column">
-                                    <option></option>
-                                    {{range index $.file_ary $i}}
-                                       <option>{{.}}</option>
-                                    {{end}}
-                                 </select>
-                              </td>
-                              <!-- <td><button class="move_column">{{.}}</button></td> -->
+                        <tr class="row_{{$i}}">
+                           {{range $key, $value := index $.file_ary $i}}
+                              <th id="col_{{$key}}" class="col_{{$key}}_02">
+                                 <h4>{{$value}}</h4>
+                              </th>
                            {{end}}
                         </tr>
                      {{ else}}
-                        <tr>
-                           {{range index $.file_ary $i}}
-                              <td>{{.}}</td>
-                           {{end}}
-                        </tr>
+                        {{ if lt $i 10}}
+                           <tr class="row_{{$i}}">
+                        {{ else }}
+                           <tr class="row_{{$i}}" style="display: none;">
+                        {{end}}
+                              {{range $key, $value := index $.file_ary $i}}
+                                 <td class="col_{{$key}}_02">{{$value}}</td>
+                              {{end}}
+                           </tr>
                      {{ end }}
                   {{end}}
-               {{end}}
-         </table>
+            </table>
 
-         <div>
-               <p>・</p>
-               <p>・</p>
-         </div>
-
+            <div>
+                  <p>・</p>
+                  <p>・</p>
+            </div>
+            
          {{ else}}
-         <p>ファイルを未選択です</p>
+            <p>ファイルを未選択です</p>
          {{ end }}
       </div>
       
-      <div class="Preview">
-         
+      <div id="Preview" class="Edit_Block">
       </div>
    </div>
-   
+   <script src="/assets/js/main.js"></script>
 </body>
 
 </html>

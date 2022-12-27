@@ -16,12 +16,23 @@ body {
         border-collapse: spacing;
         border-spacing: 0;
         border: 0.5px solid #333; }
-        body .main .Edit_Block table td {
+        body .main .Edit_Block table th {
+          width: 10vw;
           padding: 5px;
           text-align: center;
-          border: 0.5px black solid; }
+          border: 0.5px black solid;
+          font-size: 0.7vw;
+          background-color: #165641;
+          color: white;
+          font-weight: bold; }
+        body .main .Edit_Block table td {
+          width: 10vw;
+          padding: 5px;
+          text-align: center;
+          border: 0.5px black solid;
+          font-size: 0.7vw; }
         body .main .Edit_Block table .move_column {
-          width: 100%;
+          width: 150px;
           padding: 10px;
           border: none;
           background-color: #093e3e;
@@ -32,3 +43,11 @@ body {
             background-color: white;
             outline: 1px solid #093e3e;
             color: #093e3e; }
+    body .main .Preview {
+      width: 95%;
+      height: 30vh;
+      overflow: auto;
+      margin: 0 auto;
+      margin-top: 2vh;
+      border: 1px solid black;
+      padding: 10px; }

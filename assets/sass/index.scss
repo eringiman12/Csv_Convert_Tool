@@ -19,14 +19,27 @@ body {
             border-spacing: 0;
             border:0.5px solid #333;
             
-            td {
+            th {
+               width: 10vw;
                padding: 5px;
                text-align: center;
                border: 0.5px black solid ;
+               font-size: 0.7vw;
+               background-color: rgb(22, 86, 65);
+               color: white;
+               font-weight: bold;
+            }
+            
+            td {
+               width: 10vw;
+               padding: 5px;
+               text-align: center;
+               border: 0.5px black solid ;
+               font-size: 0.7vw;
             }
             
             .move_column {
-               width: 100%;
+               width: 150px;
                padding: 10px;
                border: none;
                background-color: rgb(9, 62, 62);
@@ -43,6 +56,16 @@ body {
          }
       }
       
+      .Preview {
+         width: 95%;
+         height: 30vh;
+         overflow: auto;
+         margin: 0 auto;
+         margin-top: 2vh;
+         border: 1px solid black;
+         
+         padding: 10px;
+      }
    }
 
 }
