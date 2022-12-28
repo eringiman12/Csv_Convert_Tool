@@ -5,6 +5,45 @@ body {
    .main {
       margin: 5px;
       padding: 5px;
+      overflow: auto;
+      
+      .Form_Block {
+         width: 95%;
+         margin: 0 auto;
+         margin-top: 2vh;
+         border-bottom: 3px solid   rgb(22, 86, 65);
+         padding: 10px;
+         
+         .send_btn {
+            background-color: rgb(22, 86, 65);
+            border: none;
+            padding: 5px;
+            font-size: 0.8vw;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            
+            &:hover {
+               outline: 1px solid rgb(22, 86, 65);
+               background-color: white;
+               color:  rgb(22, 86, 65);
+               font-weight: bold;
+            }
+         }
+         
+         h3 {
+            width: 30%;
+            border-bottom: 3px solid  rgb(22, 86, 65);
+            color:  rgb(22, 86, 65);
+         }
+         
+         h5 {
+            margin: 0;
+            padding: 2px;
+         }
+      }
+      
       .Edit_Block {
          width: 95%;
          height: 30vh;
@@ -28,10 +67,12 @@ body {
                background-color: rgb(22, 86, 65);
                color: white;
                font-weight: bold;
+               cursor: all-scroll;
             }
             
             td {
                width: 10vw;
+               height: 30px;
                padding: 5px;
                text-align: center;
                border: 0.5px black solid ;

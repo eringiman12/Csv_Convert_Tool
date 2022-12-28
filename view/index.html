@@ -16,13 +16,18 @@
 <body>
    <div class="main">
       <div class="Form_Block">
-         <h5>CSVを選択してください</h5>
-         <p>選択中ファイル名：{{ .file_name }} </p>
+         
+         <h3>選択中ファイル名：{{ .file_name }} </h3>
          <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
             <div>
+               <h5>CSVを選択してください</h5>
                <input type="file" name="CSV_FIle">
-               <input type="submit" value="送信する">
+               <input type="submit" class="send_btn" value="送信する">
             </div>
+         </form>
+         <br/>
+         <form action="" id="csv_syuturyoku">
+            <input type="submit" class="send_btn" value="CSV出力">
          </form>
       </div>
       

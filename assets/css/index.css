@@ -3,7 +3,35 @@ body {
   padding: 0; }
   body .main {
     margin: 5px;
-    padding: 5px; }
+    padding: 5px;
+    overflow: auto; }
+    body .main .Form_Block {
+      width: 95%;
+      margin: 0 auto;
+      margin-top: 2vh;
+      border-bottom: 3px solid #165641;
+      padding: 10px; }
+      body .main .Form_Block .send_btn {
+        background-color: #165641;
+        border: none;
+        padding: 5px;
+        font-size: 0.8vw;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer; }
+        body .main .Form_Block .send_btn:hover {
+          outline: 1px solid #165641;
+          background-color: white;
+          color: #165641;
+          font-weight: bold; }
+      body .main .Form_Block h3 {
+        width: 30%;
+        border-bottom: 3px solid #165641;
+        color: #165641; }
+      body .main .Form_Block h5 {
+        margin: 0;
+        padding: 2px; }
     body .main .Edit_Block {
       width: 95%;
       height: 30vh;
@@ -24,9 +52,11 @@ body {
           font-size: 0.7vw;
           background-color: #165641;
           color: white;
-          font-weight: bold; }
+          font-weight: bold;
+          cursor: all-scroll; }
         body .main .Edit_Block table td {
           width: 10vw;
+          height: 30px;
           padding: 5px;
           text-align: center;
           border: 0.5px black solid;
