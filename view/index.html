@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" href="C:/eco_var/Go/CSV_COnvert_Tool/assets/css/index.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/table-dragger@1.0.3/dist/table-dragger.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   
     <style type="text/css">
          @import url("/assets/css/index.css");
     </style>
@@ -15,8 +15,6 @@
 
 <body>
    <div class="main">
-      
-      
       <div class="Form_Block">
          <h5>CSVを選択してください</h5>
          <p>選択中ファイル名：{{ .file_name }} </p>
@@ -33,13 +31,16 @@
             <table id="Edit_Table">
                   {{range $i, $v := .file_ary}} 
                      {{ if lt $i 1}}
-                        <tr class="row_{{$i}}">
-                           {{range $key, $value := index $.file_ary $i}}
-                              <th id="col_{{$key}}" class="col_{{$key}}_02">
-                                 <h4>{{$value}}</h4>
-                              </th>
-                           {{end}}
-                        </tr>
+                        <thead>
+                           <tr class="row_{{$i}}">
+                              {{range $key, $value := index $.file_ary $i}}
+                                 <th id="col_{{$key}}" class="col_{{$key}}_02">
+                                    <h4>{{$value}}</h4>
+                                 </th>
+                              {{end}}
+                           </tr>
+                        </thead>
+                        
                      {{ else}}
                         {{ if lt $i 10}}
                            <tr class="row_{{$i}}">
