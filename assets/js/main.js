@@ -22,26 +22,40 @@ $(function(){
       var judge = false
       var yoso_id = "";
       
+      //  プレビューエリアの子要素のループ
       $("#Preview_table").children().each(function(index, element){
+         
          $(this).children().each(function(index, element){
+            //  一時配列の作成
             var tmp_ary =[];
+            //  行ループ
             $(this).children().each(function(index, element){
+               //  ループ要素のid取得
                yoso_id = $(this).attr("id");
                yoso_class_name = $(this).attr("class");
                if ($('.' + yoso_class_name).css('display') != 'none') {
-                  tmp_ary.push($('#' + yoso_id).text());
+                  tmp_ary.push($('#' + yoso_id).text().replace(/\n/g, '').replace(/\s+/g,''));
                } 
              })
-             console.log(tmp_ary)
+             
+             Show_ClassName_ary.push(tmp_ary)
           })
         
        })
-
-      return false;
+       
+       const Form_csv = document.getElementById("csv_syuturyoku");
+       
+       Show_ClassName_ary.forEach(element => {
+         var input_box = document.createElement("input");
+         input_box.name = "Csv_Vals[]";
+         input_box.type = "hidden";
+         input_box.value = element;
+         Form_csv.appendChild(input_box);
+       });
+ 
    
   });
 });
-
 
 
 function Clone_Yoso(copy_id) {
@@ -55,7 +69,7 @@ function Clone_Yoso(copy_id) {
       $("#Preview_table tr").children().each(function(index, element){
         var class_name = $(this).attr("class").replace("ui-draggable ui-draggable-handle","");
         $(this).attr("class","ple_" + class_name);
-        $(this).attr("id","ple_" + class_name + "_r" + i);
+        $(this).attr("id","ple_" + class_name.replace(" ","") + "_r" + i);
         i++;
       })
       

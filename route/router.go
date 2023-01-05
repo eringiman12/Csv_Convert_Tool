@@ -12,5 +12,6 @@ func GetRouter() *gin.Engine {
 	router.LoadHTMLGlob("view/*html")
 	router.GET("/", controller.IndexDisplayAction)
 	router.POST("/regit", controller.Regit_Date)
+	router.POST("/create_csv", controller.Create_Csv_Date)
 	return router
 }

@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/csv"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/text/encoding/japanese"
@@ -45,4 +46,9 @@ func Regit_Date(ctx *gin.Context) {
 		"file_name": header.Filename,
 		"file_ary":  Csv_Result_2nd_ary,
 	})
+}
+
+
+func Create_Csv_Date(ctx *gin.Context) {
+	fmt.Print("aaaaa")
 }
