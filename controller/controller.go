@@ -2,7 +2,8 @@ package controller
 
 import (
 	"encoding/csv"
-	"fmt"
+	"log"
+	"os"
 	"strconv"
 	"strings"
 
@@ -60,19 +61,34 @@ func Create_Csv_Date(ctx *gin.Context) {
 	// 列数の初期化
 	col := 1
 	
+	var line []string
+	
+	//  二次元配列に格納
+	var Csv_Result_2nd_ary [][]string
+	//  CSV名
+	file, err := os.Create("C:/Users/kei-goto/Desktop/sample.csv")
+    if err != nil {
+        log.Println(err)
+    }
+    defer file.Close()
+	
 	// CSV書き込み処理
 	for _, s := range Csv_Vals_Data {
-		fmt.Printf("%s\n", s + strconv.Itoa(col)) 
 		
+		line = append(line, s)
 		if num == col {
+			Csv_Result_2nd_ary = append(Csv_Result_2nd_ary, line)
+
+			line = nil
 			col = 1
 		} else {
 			col += 1
 		}
-		
-
 	}
 	
-
-	fmt.Printf("%v",num)
+	//  CSVに書き込み
+    writer := csv.NewWriter(file)
+	//  すべt書き込み
+    writer.WriteAll(Csv_Result_2nd_ary)          
+    writer.Flush()      
 }
