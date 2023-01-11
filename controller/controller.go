@@ -3,6 +3,8 @@ package controller
 import (
 	"encoding/csv"
 	"fmt"
+	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/text/encoding/japanese"
@@ -49,6 +51,28 @@ func Regit_Date(ctx *gin.Context) {
 }
 
 
-func Create_Csv_Date(ctx *gin.Context) {
-	fmt.Print("aaaaa")
+func Create_Csv_Date(ctx *gin.Context) {	
+	//  CSVの列数
+	num, _ := strconv.Atoi(ctx.PostForm("Csv_Vals_cnt"))
+	//  CSV書き込む値
+	Csv_Vals_Data := strings.Split(ctx.PostForm("Csv_Vals"), ",")
+	
+	// 列数の初期化
+	col := 1
+	
+	// CSV書き込み処理
+	for _, s := range Csv_Vals_Data {
+		fmt.Printf("%s\n", s + strconv.Itoa(col)) 
+		
+		if num == col {
+			col = 1
+		} else {
+			col += 1
+		}
+		
+
+	}
+	
+
+	fmt.Printf("%v",num)
 }
