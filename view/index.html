@@ -6,6 +6,9 @@
     <script src="https://cdn.jsdelivr.net/npm/table-dragger@1.0.3/dist/table-dragger.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
    
     <style type="text/css">
          @import url("/assets/css/index.css");
@@ -25,6 +28,7 @@
                <input type="submit" class="send_btn" value="送信する">
             </div>
          </form>
+         
          <br/>
          <form action="/create_csv" method="POST" id="csv_syuturyoku">
             <!-- <input type="hidden" id="csv_date" name~="test[]" value="">
@@ -72,8 +76,13 @@
          {{ end }}
       </div>
       
-      <div id="Preview" class="Edit_Block">
+      <div>
+         <div id="Select_Del_Id">
+         </div>
       </div>
+      <div id="Preview" class="Edit_Block btn btn-neutral">
+      </div>
+      <button id="Select_Del">選択中列の削除</button>
    </div>
    <script src="/assets/js/main.js"></script>
 </body>

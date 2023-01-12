@@ -14,6 +14,34 @@ $(function(){
          Clone_Yoso(draggable.attr("id"))
       }
     });
+   
+   $(document).click(function(event) {
+      var e_class = event.target.className
+      
+      if (e_class.match(/ple/)) {
+         e_class = e_class.replace(" sindu_handle","");
+
+         
+         var chk_e_class = false;
+         $("#Select_Del_Id").children().each(function(index, element){
+            console.log($(this).attr("id"));
+            if(e_class == $(this).attr("id").replace("p_","")) {
+               chk_e_class = true;
+               return false;
+            }
+         })
+         
+         if(chk_e_class) {
+            $('#p_'+e_class).remove();
+             $("." + e_class).css("border", "#000 1px solid");
+         } else {
+            $('#Select_Del_Id').append("<p id='p_"+e_class+"'>" + e_class + "</p>");
+            $('#p_'+ e_class).hide();
+            $("." + e_class).css("border", "#34ebc3 1px solid");
+         }
+      }
+
+    });  
     
     $('#csv_syuturyoku').submit(function() {
       var yoso_class_name = "";
@@ -90,6 +118,7 @@ function Clone_Yoso(copy_id) {
         var class_name = $(this).attr("class").replace("ui-draggable ui-draggable-handle","");
         $(this).attr("class","ple_" + class_name);
         $(this).attr("id","ple_" + class_name.replace(" ","") + "_r" + i);
+   
         i++;
       })
       

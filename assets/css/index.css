@@ -81,3 +81,7 @@ body {
       margin-top: 2vh;
       border: 1px solid black;
       padding: 10px; }
+    body .main #Select_Del {
+      margin: 0 auto;
+      margin-top: 1vh;
+      margin-left: 2vw; }
