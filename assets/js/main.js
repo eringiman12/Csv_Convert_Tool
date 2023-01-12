@@ -40,8 +40,20 @@ $(function(){
             $("." + e_class).css("border", "#34ebc3 1px solid");
          }
       }
-
     });  
+    
+    
+
+    $("#Select_Del").click(function (event) {
+      var p_id = "";
+      $("#Select_Del_Id").children().each(function(index, element){
+        console.log($(this).attr("id"));
+        p_id = $(this).attr("id").replace("p_","");
+        $("." + p_id).css("border", "#000 1px solid");
+        $('#p_'+ p_id).remove();
+        $("." + p_id).hide();
+      })
+    })
     
     $('#csv_syuturyoku').submit(function() {
       var yoso_class_name = "";

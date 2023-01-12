@@ -14,23 +14,37 @@ body {
          border-bottom: 3px solid   rgb(22, 86, 65);
          padding: 10px;
          
-         .send_btn {
-            background-color: rgb(22, 86, 65);
-            border: none;
-            padding: 5px;
-            font-size: 0.8vw;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
+         .select_block {
+            width: 100%;
             
-            &:hover {
-               outline: 1px solid rgb(22, 86, 65);
-               background-color: white;
-               color:  rgb(22, 86, 65);
+            display: inline-block;
+            
+            h5 {
+               margin: 0;
+               padding: 2px;
+            }
+
+            .send_btn {
+               background-color: rgb(22, 86, 65);
+               border: none;
+               padding: 5px;
+               font-size: 0.8vw;
+               color: white;
                font-weight: bold;
+               border-radius: 5px;
+               cursor: pointer;
+               margin-top: 0.5vh;
+               
+               &:hover {
+                  outline: 1px solid rgb(22, 86, 65);
+                  background-color: white;
+                  color:  rgb(22, 86, 65);
+                  font-weight: bold;
+               }
             }
          }
+         
+         
          
          h3 {
             width: 30%;
@@ -38,10 +52,7 @@ body {
             color:  rgb(22, 86, 65);
          }
          
-         h5 {
-            margin: 0;
-            padding: 2px;
-         }
+
       }
       
       .Edit_Block {
@@ -112,6 +123,18 @@ body {
          margin: 0 auto;
          margin-top: 1vh;
          margin-left: 2vw;
+         border: none;
+         background-color:  rgb(9, 62, 62);
+         color: white;
+         font-size: 0.8vw;
+         border-radius: 5px;
+         cursor:pointer;
+         
+         &:hover {
+            outline: 1px solid rgb(9, 62, 62);
+            color:  rgb(9, 62, 62);
+            background-color: white;
+         }
       }
    }
 

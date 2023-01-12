@@ -11,27 +11,31 @@ body {
       margin-top: 2vh;
       border-bottom: 3px solid #165641;
       padding: 10px; }
-      body .main .Form_Block .send_btn {
-        background-color: #165641;
-        border: none;
-        padding: 5px;
-        font-size: 0.8vw;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer; }
-        body .main .Form_Block .send_btn:hover {
-          outline: 1px solid #165641;
-          background-color: white;
-          color: #165641;
-          font-weight: bold; }
+      body .main .Form_Block .select_block {
+        width: 100%;
+        display: inline-block; }
+        body .main .Form_Block .select_block h5 {
+          margin: 0;
+          padding: 2px; }
+        body .main .Form_Block .select_block .send_btn {
+          background-color: #165641;
+          border: none;
+          padding: 5px;
+          font-size: 0.8vw;
+          color: white;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 0.5vh; }
+          body .main .Form_Block .select_block .send_btn:hover {
+            outline: 1px solid #165641;
+            background-color: white;
+            color: #165641;
+            font-weight: bold; }
       body .main .Form_Block h3 {
         width: 30%;
         border-bottom: 3px solid #165641;
         color: #165641; }
-      body .main .Form_Block h5 {
-        margin: 0;
-        padding: 2px; }
     body .main .Edit_Block {
       width: 95%;
       height: 30vh;
@@ -84,4 +88,14 @@ body {
     body .main #Select_Del {
       margin: 0 auto;
       margin-top: 1vh;
-      margin-left: 2vw; }
+      margin-left: 2vw;
+      border: none;
+      background-color: #093e3e;
+      color: white;
+      font-size: 0.8vw;
+      border-radius: 5px;
+      cursor: pointer; }
+      body .main #Select_Del:hover {
+        outline: 1px solid #093e3e;
+        color: #093e3e;
+        background-color: white; }

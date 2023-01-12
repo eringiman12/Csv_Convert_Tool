@@ -57,7 +57,10 @@ func Create_Csv_Date(ctx *gin.Context) {
 	num, _ := strconv.Atoi(ctx.PostForm("Csv_Vals_cnt"))
 	//  CSV書き込む値
 	Csv_Vals_Data := strings.Split(ctx.PostForm("Csv_Vals"), ",")
-	
+
+	// CSVファイル名
+	Csv_File_Name := ctx.PostForm("csv_name")
+		
 	// 列数の初期化
 	col := 1
 	
@@ -65,8 +68,9 @@ func Create_Csv_Date(ctx *gin.Context) {
 	
 	//  二次元配列に格納
 	var Csv_Result_2nd_ary [][]string
-	//  CSV名
-	file, err := os.Create("C:/Users/kei-goto/Desktop/sample.csv")
+	//  CSV作成
+	file, err := os.Create("C:/Users/kei-goto/Desktop/" + Csv_File_Name)
+	
     if err != nil {
         log.Println(err)
     }

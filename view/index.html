@@ -21,20 +21,20 @@
       <div class="Form_Block">
          
          <h3>選択中ファイル名：{{ .file_name }} </h3>
-         <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
-            <div>
-               <h5>CSVを選択してください</h5>
-               <input type="file" name="CSV_FIle">
-               <input type="submit" class="send_btn" value="送信する">
-            </div>
-         </form>
+         <div class="select_block">
+            <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile">
+
+                  <h5>CSVを選択してください</h5>
+                  <input type="file" name="CSV_FIle">
+                  <input type="submit" class="send_btn" value="送信する">
          
-         <br/>
-         <form action="/create_csv" method="POST" id="csv_syuturyoku">
-            <!-- <input type="hidden" id="csv_date" name~="test[]" value="">
-            <input type="hidden" id="col_cnt" value=""> -->
-            <input type="submit" class="send_btn" value="CSV出力">
-         </form>
+            </form>
+
+            <form action="/create_csv" method="POST" id="csv_syuturyoku">
+               <input type="submit" class="send_btn" value="CSV出力">
+               <input type="hidden" value="{{ .file_name }}" name="csv_name">
+            </form>
+         </div>
       </div>
       
       <div class="Edit_Block">
