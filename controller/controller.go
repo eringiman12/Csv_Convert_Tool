@@ -17,7 +17,6 @@ func IndexDisplayAction(ctx *gin.Context) {
 }
 
 func Regit_Date(ctx *gin.Context) {
-
 	// name := ctx.PostForm("name")
 	file, header, err := ctx.Request.FormFile("CSV_FIle")
 
@@ -71,10 +70,10 @@ func Create_Csv_Date(ctx *gin.Context) {
 	//  CSV作成
 	file, err := os.Create(Csv_File_Name_path)
 	
-    if err != nil {
-        log.Println(err)
-    }
-    defer file.Close()
+   if err != nil {
+      log.Println(err)
+   }
+   defer file.Close()
 	
 	// CSV書き込み処理
 	for _, s := range Csv_Vals_Data {
@@ -91,10 +90,10 @@ func Create_Csv_Date(ctx *gin.Context) {
 	}
 	
 	//  CSVに書き込み
-    writer := csv.NewWriter(file)
+   writer := csv.NewWriter(file)
 	//  すべt書き込み
-    writer.WriteAll(Csv_Result_2nd_ary)          
-    writer.Flush()    
+   writer.WriteAll(Csv_Result_2nd_ary)          
+   writer.Flush()    
 	 
 	ctx.HTML(200, "index.html", gin.H{
 		"csv_file_name_path": Csv_File_Name_path,
