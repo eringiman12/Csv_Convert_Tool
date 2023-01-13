@@ -18,6 +18,17 @@
 
 <body>
    <div class="main">
+      {{ if .csv_file_name_path }}
+         <a href="{{.csv_file_name_path}}" download="{{.csv_file_name}}"  id="dl"></a>
+         
+         <script>
+            var dl = document.getElementById("dl")
+            dl.click();
+            dl.remove();
+         </script>
+         
+      {{ end }}
+      
       <div class="Form_Block">
          
          <h3>選択中ファイル名：{{ .file_name }} </h3>

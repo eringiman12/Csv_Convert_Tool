@@ -96,24 +96,6 @@ $(function(){
       input_box2.value = Show_ClassName_ary[0].length;
       Form_csv.appendChild(input_box2);
     
-      // var input_box2 = document.createElement("input");
-      // input_box2.name = "a";
-      // input_box2.type = "hidden";
-      // input_box2.value = "test";
-      // Form_csv.appendChild(input_box2);
-       
-      //  Show_ClassName_ary.forEach(element => {
-      //    var input_box = document.createElement("input");
-      //    input_box.name = "Csv_Vals[]";
-      //    input_box.type = "hidden";
-      //    input_box.value = element;
-      //    Form_csv.appendChild(input_box);
-      //  });
-     
-      // // //  $("#csv_date").val(Show_ClassName_ary)
-      // // //  $("#col_cnt").val(Show_ClassName_ary[0].length)
-      // return false;
-   
   });
 });
 
