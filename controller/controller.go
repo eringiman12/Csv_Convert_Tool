@@ -59,7 +59,7 @@ func Create_Csv_Date(ctx *gin.Context) {
 	Csv_Vals_Data := strings.Split(ctx.PostForm("Csv_Vals"), ",")
 
 	// CSVファイル名
-	Csv_File_Name := "M:/社内共有/70暫定フォルダ/効率化/Csv_Tool/" + ctx.PostForm("csv_name")
+	Csv_File_Name := "○○" + ctx.PostForm("csv_name")
 		
 	// 列数の初期化
 	col := 1
