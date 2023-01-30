@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/table-dragger@1.0.3/dist/table-dragger.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+   
+    <style type="text/css">
+         @import url("/assets/css/index.css");
+    </style>
+    
+</head>
+
+<body>
+   <div class="main">
+      {{ if .csv_file_name_path }}
+         <a href="{{.csv_file_name_path}}" download="{{.csv_file_name}}"  id="dl"></a>
+         
+         <script>
+            var dl = document.getElementById("dl")
+            dl.click();
+            dl.remove();
+         </script>
+         
+      {{ end }}
+      
+      <div class="Form_Block">
+         
+         <h3>選択中ファイル名：{{ .file_name }} </h3>
+         <div class="select_block">
+            <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile" id="csv_select">
+                  <h5>CSVを選択してください</h5>
+                  <input type="file" name="CSV_FIle">
+                  <input type="submit" class="send_btn" value="送信する">
+            </form>
+            <form action="/create_csv" method="POST" id="csv_syuturyoku">
+               <input type="submit" class="send_btn_csv" value="CSV出力">
+               <input type="hidden" value="{{ .file_name }}" name="csv_name">
+            </form>
+         </div>
+      </div>
+      
+      <div class="Edit_Block">
+         {{ if .file_name }}
+            <table id="Edit_Table">
+                  {{range $i, $v := .file_ary}} 
+                     {{ if lt $i 1}}
+                        <thead>
+                           <tr class="row_{{$i}}">
+                              {{range $key, $value := index $.file_ary $i}}
+                                 <th id="col_{{$key}}" class="col_{{$key}}_02">
+                                    {{$value}}
+                                 </th>
+                              {{end}}
+                           </tr>
+                        </thead>
+                        
+                     {{ else}}
+                        {{ if lt $i 10}}
+                           <tr class="row_{{$i}}">
+                        {{ else }}
+                           <tr class="row_{{$i}}" style="display: none;">
+                        {{end}}
+                              {{range $key, $value := index $.file_ary $i}}
+                                 <td class="col_{{$key}}_02">{{$value}}</td>
+                              {{end}}
+                           </tr>
+                     {{ end }}
+                  {{end}}
+            </table>
+
+            <div>
+                  <p>・</p>
+                  <p>・</p>
+            </div>
+            
+         {{ else}}
+            <p>ファイルを未選択です</p>
+         {{ end }}
+      </div>
+      
+      <div>
+         <div id="Select_Del_Id">
+         </div>
+      </div>
+      <div id="Preview" class="Edit_Block btn btn-neutral">
+      </div>
+
+      <div class="process">
+         <table>
+            <tr>
+               <th>削除：</th>
+               <td>
+                  <button id="Select_Del">選択中列の削除</button>
+               </td>
+               <th></th>
+               <th>追加：</th>
+               <td>
+                  <button id="Select_add">追加</button>
+               </td>
+               <!-- <td>追加：<button id="Select_Del">選択中列の削除</button></td> -->
+            <tr>
+            <tr>
+               
+            </tr>
+         </table>
+      </div>
+
+   </div>
+   <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
