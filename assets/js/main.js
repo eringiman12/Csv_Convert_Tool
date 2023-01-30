@@ -85,7 +85,9 @@ $(function(){
       var judge = false
       var yoso_id = "";
       
-      //  プレビューエリアの子要素のループ
+      
+      
+      //  プレビューエリアの子要素のルー
       $("#Preview_table").children().each(function(index, element){
          
          $(this).children().each(function(index, element){
