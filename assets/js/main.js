@@ -20,8 +20,6 @@ $(function(){
       
       if (e_class.match(/ple/)) {
          e_class = e_class.replace(" sindu_handle","");
-
-         
          var chk_e_class = false;
          $("#Select_Del_Id").children().each(function(index, element){
             if(e_class == $(this).attr("id").replace("p_","")) {

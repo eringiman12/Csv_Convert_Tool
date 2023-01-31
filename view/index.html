@@ -20,13 +20,21 @@
    <div class="main">
       {{ if .csv_file_name_path }}
          <a href="{{.csv_file_name_path}}" download="{{.csv_file_name}}"  id="dl"></a>
+         <a href="/trash&fname={{.csv_file_name_path}}" id="Trash_files"></a>
+         
+         <form action="/trash" method="post">
+            <input type="hidden" value="{{.csv_file_name_path}}" name="f_path" id="file_path">
+            <input type="submit" id="sub">
+         </form>
          
          <script>
-            var dl = document.getElementById("dl")
+            var dl = document.getElementById("dl");
             dl.click();
             dl.remove();
+            var tf = document.getElementById("sub");
+            tf.click();
+            tf.remove();
          </script>
-         
       {{ end }}
       
       <div class="Form_Block">

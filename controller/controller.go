@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/csv"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -50,8 +51,32 @@ func Regit_Date(ctx *gin.Context) {
 	})
 }
 
+func Trash_File(ctx *gin.Context) {
+	file_path := ctx.PostForm("f_path")
+
+	if file_path != "" {
+			dir, err := os.Getwd()
+			if err != nil {
+				panic(err)
+			}
+
+			f_path := dir + "\\assets\\files"
+			defer os.RemoveAll(f_path)
+	}
+	
+	ctx.HTML(200, "index.html", gin.H{})
+}
 
 func Create_Csv_Date(ctx *gin.Context) {	
+	dir, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+
+	if err := os.MkdirAll(dir + "\\assets\\files", os.ModePerm); err != nil {
+		fmt.Println(err)
+  }
+	
 	//  CSVの列数
 	num, _ := strconv.Atoi(ctx.PostForm("Csv_Vals_cnt"))
 	//  CSV書き込む値
@@ -91,8 +116,9 @@ func Create_Csv_Date(ctx *gin.Context) {
 	
 	//  CSVに書き込み
 	writer := csv.NewWriter(transform.NewWriter(file, japanese.ShiftJIS.NewEncoder()))
+	//デフォルトはLFのみ
 	writer.UseCRLF = true
-	
+
 	//  すべt書き込み
    writer.WriteAll(Csv_Result_2nd_ary)          
    writer.Flush()    
@@ -101,4 +127,20 @@ func Create_Csv_Date(ctx *gin.Context) {
 		"csv_file_name_path": Csv_File_Name_path,
 		"csv_file_name": ctx.PostForm("csv_name"),
 	})
+	// vm := otto.New()
+
+	// script := `
+	// 	var n = 100;
+	// 	console.log("hello-" + n); // hello-100
+	// 	n; // 最後に返すと Run の戻り値 value になる
+	// `
+	// value, err := vm.Run(script)
+	// if err != nil {
+	// 	 fmt.Println(err)
+	// 	 return
+	// }
+
+	// if !value.IsUndefined() {
+	// 	 fmt.Println("value:", value.String()) // 100
+	// }
 }

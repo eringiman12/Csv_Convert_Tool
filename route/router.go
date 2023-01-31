@@ -13,5 +13,6 @@ func GetRouter() *gin.Engine {
 	router.GET("/", controller.IndexDisplayAction)
 	router.POST("/regit", controller.Regit_Date)
 	router.POST("/create_csv", controller.Create_Csv_Date)
+	router.POST("/trash", controller.Trash_File)
 	return router
 }
