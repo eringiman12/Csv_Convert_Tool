@@ -90,7 +90,9 @@ func Create_Csv_Date(ctx *gin.Context) {
 	}
 	
 	//  CSVに書き込み
-   writer := csv.NewWriter(file)
+	writer := csv.NewWriter(transform.NewWriter(file, japanese.ShiftJIS.NewEncoder()))
+	writer.UseCRLF = true
+	
 	//  すべt書き込み
    writer.WriteAll(Csv_Result_2nd_ary)          
    writer.Flush()    
