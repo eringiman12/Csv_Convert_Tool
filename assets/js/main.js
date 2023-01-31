@@ -84,10 +84,8 @@ $(function(){
       var T_class_name = "";
       var judge = false
       var yoso_id = "";
-      
-      
-      
-      //  プレビューエリアの子要素のルー
+
+      //  プレビューエリアの子要素のルール
       $("#Preview_table").children().each(function(index, element){
          
          $(this).children().each(function(index, element){
