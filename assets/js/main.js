@@ -40,7 +40,17 @@ $(function(){
          }
       }
     });  
-   
+    
+    $(".send_btn").click(function (event) {
+      let file_propaty = document.getElementById('csv_file_p');
+
+      if(file_propaty.value == "") {
+         alert("csvを選択してください。");
+         return false;
+      }
+      
+    })
+    
     $("#Select_Del").click(function (event) {
       var p_id = "";
       $("#Select_Del_Id").children().each(function(index, element){
@@ -73,7 +83,6 @@ $(function(){
           } 
        })
       
-       console.log("ple_col_"+Max+"_02_add_"+add_cnt);
       $(".row_0 .ple_col_" + Max + "_02").after("<th class='ple_col_"+Max+"_02_add_"+add_cnt+"'></th>");
       $("td.ple_col_" + Max + "_02").after("<td class='ple_col_"+Max+"_02_add_"+add_cnt+"'></td>");
     })
@@ -81,8 +90,6 @@ $(function(){
     $('#csv_syuturyoku').submit(function() {
       var yoso_class_name = "";
       var Show_ClassName_ary = [];
-      var T_class_name = "";
-      var judge = false
       var yoso_id = "";
 
       //  プレビューエリアの子要素のルール
@@ -91,6 +98,7 @@ $(function(){
          $(this).children().each(function(index, element){
             //  一時配列の作成
             var tmp_ary =[];
+            
             //  行ループ
             $(this).children().each(function(index, element){
                //  ループ要素のid取得
@@ -100,25 +108,29 @@ $(function(){
                   tmp_ary.push($('#' + yoso_id).text().replace(/\n/g, '').replace(/\s+/g,''));
                } 
              })
-             
              Show_ClassName_ary.push(tmp_ary)
           })
         
        })
        
-      const Form_csv = document.getElementById("csv_syuturyoku");
-      
-      var input_box = document.createElement("input");
-      input_box.name = "Csv_Vals";
-      input_box.type = "hidden";
-      input_box.value = Show_ClassName_ary;
-      Form_csv.appendChild(input_box);
-      var input_box2 = document.createElement("input");
-      input_box2.name = "Csv_Vals_cnt";
-      input_box2.type = "hidden";
-      input_box2.value = Show_ClassName_ary[0].length;
-      Form_csv.appendChild(input_box2);
-    
+      if(Show_ClassName_ary.length != 0) {
+         
+         const Form_csv = document.getElementById("csv_syuturyoku");
+         
+         const getRectArea = function(name, val) {
+            var input_box = document.createElement("input");
+            input_box.name = name;
+            input_box.type = "hidden";
+            input_box.value = val;
+            Form_csv.appendChild(input_box);
+         };
+          
+          getRectArea("Csv_Vals",Show_ClassName_ary)
+          getRectArea("Csv_Vals_cnt",Show_ClassName_ary[0].length)
+
+      } else {
+         return false;  
+      }    
   });
 });
 

@@ -35,8 +35,8 @@
          <div class="select_block">
             <form action="/regit" method="POST" enctype="multipart/form-data" name="csvfile" id="csv_select">
                   <h5>CSVを選択してください</h5>
-                  <input type="file" name="CSV_FIle">
-                  <input type="submit" class="send_btn" value="送信する">
+                  <input type="file" name="CSV_FIle" id="csv_file_p" accept=".csv">
+                  <input type="submit" class="send_btn" value="送信">
             </form>
             <form action="/create_csv" method="POST" id="csv_syuturyoku">
                <input type="submit" class="send_btn_csv" value="CSV出力">
